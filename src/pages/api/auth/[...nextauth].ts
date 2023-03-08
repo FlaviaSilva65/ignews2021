@@ -1,15 +1,37 @@
-import NextAuth from "next-auth"
+import { query as q } from 'faunadb'
+
+import NextAuth, { NextAuthOptions} from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 
-export const authOptions = {
+import { fauna } from '../../../services/fauna';
+
+export const authOptions: NextAuthOptions = ({
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          scope: 'read:user'
+        }
+      }
+      
     }),
     // ...add more providers here
   ],
-}
+  callbacks:{
+    async signIn({ user, account, profile, credentials }) {
+      const { email } = user
 
+      await fauna.query(
+        q.Create(
+          q.Collection('users'),
+          { data: { email }}
+        )
+      )
+      return true
+    },
+  }
+})
 export default NextAuth(authOptions)
