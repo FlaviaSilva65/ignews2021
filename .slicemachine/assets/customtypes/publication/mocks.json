@@ -1,0 +1,32 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "period"
+  },
+  "title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Exercitation incididunt exercitation aute aute esse proident aliqua velit consequat aliqua nulla veniam ut sint. Proident cillum minim exercitation. Lorem officia ad aliquip irure veniam consectetur duis nulla."
+        }
+      }
+    ]
+  },
+  "content": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Enim velit duis veniam laboris proident tempor reprehenderit voluptate nulla esse. Duis nostrud esse commodo culpa excepteur commodo incididunt esse. In non sunt elit aliqua non eiusmod elit exercitation eiusmod proident proident ad."
+        }
+      }
+    ]
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": []
+  }
+}
